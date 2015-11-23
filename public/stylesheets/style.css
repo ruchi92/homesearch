@@ -1,5 +1,97 @@
-#headersearch {
-    background-color: #f05f40;
-    border-radius: 2px;
+.btn {
+    border: solid thin maroon;
+    border-radius: 10px;
+    background-image: linear-gradient(90deg, red, maroon);
+    color: white;
 }
 
+.navbar {
+    margin-bottom: 0;
+}
+
+#headersearch {
+    height: 60px;
+    width: 60px;
+}
+
+.form-control {
+    height: 60px;
+}
+
+.navbar-form {
+    width: 70%;
+}
+
+.input-group {
+    width: 100%;
+    margin-left: 10%;
+}
+
+#bs-example-navbar-collapse-1 {
+    border: thin solid lightyellow;
+    box-shadow: 1px 1px 1px gray;
+    border-radius: 10px;
+}
+
+.dropdown-menu > li {
+    padding: 10px;
+}
+
+#summarydiv {
+    padding: 10px;
+    margin-top: 0;
+    font-family: 'Open Sans','Helvetica Neue',Arial,sans-serif;
+    background-color: aliceblue;
+    vertical-align: middle;
+}
+
+.headline {
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 100%;
+}
+
+.info {
+    border-right: thin solid lightgray;
+    float: left;
+    padding: 0 10px 0 10px;
+}
+
+.headericon {
+    font-size: 2em;
+    padding: 20%;
+}
+
+.actionicon {
+    color: darkgray;
+}
+
+.item > img {
+    width: 90%;
+    margin: auto;
+}
+
+#google-map-container {
+    margin-top: 20px;
+    box-sizing: border-box;
+    height: 20em;
+}
+
+.category {
+    width: 20%;
+    text-align: right;
+    padding: 5px;
+    color: darkgray;
+    font-weight: bold;
+}
+
+.information {
+    width: 30%;
+    text-align: left;
+    padding: 5px;
+}
+
+
+.scheduler {
+    width: 30%;
+}
