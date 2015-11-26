@@ -2,63 +2,77 @@
 <html>
   <head>
       <% include inclusions.ejs %>
+      <script type="text/javascript">
+
+      </script>
   </head>
   <body id="page-top">
     <% include header.ejs %>
     <% include headerbar.ejs %>
-
-        <div class="sections row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <ul class="nav nav-pills">
-                    <li role="presentation"><a href="#overview">Overview</a></li>
-                    <li role="presentation"><a href="#propdetails">Property Details</a></li>
-                    <li role="presentation"><a href="#">Tour Insights</a></li>
-                    <li role="presentation"><a href="#">Property History</a></li>
-                    <li role="presentation"><a href="#">Public Records</a></li>
-                    <li role="presentation"><a href="#">Nearby Schools</a></li>
-                    <li role="presentation"><a href="#">Neighborhood</a></li>
-                    <li role="presentation"><a href="#">Similar Homes</a></li>
-                </ul>
-            </div>
+    <div class="sections row">
+        <div class="col-lg-8 col-lg-offset-2 text-center" id="pagesections">
+            <ul class="nav nav-pills">
+                <li role="presentation"><a href="#overview">Overview</a></li>
+                <li role="presentation"><a href="#propdetails">Property Details</a></li>
+                <li role="presentation"><a href="#tourinsights">Tour Insights</a></li>
+                <li role="presentation"><a href="#prophistory">Property History</a></li>
+                <li role="presentation"><a href="#pubrecords">Public Records</a></li>
+                <li role="presentation"><a href="#schools">Nearby Schools</a></li>
+                <li role="presentation"><a href="#neighborhood">Neighborhood</a></li>
+                <li role="presentation"><a href="#similarhomes">Similar Homes</a></li>
+                <!--<li role="presentation"><a href="#">Similar Homes</a></li>-->
+            </ul>
         </div>
-    </section>
+    </div>
     <section class="no-padding" id="overview" style="display: flex;">
-        <div class="container-fluid" style="margin-left: auto; margin-right: auto; width: 80%; height: 80%">
+        <div class="container-fluid sectioncontainer">
             <div style="width:60%; height: auto; float: left; box-sizing: border-box;">
                 <div id="myCarousel" class="carousel slide" data-ride="carousel">
                     <!-- Indicators -->
                     <% include carousel.ejs %>
                 </div>
-                <p>
-                    Newly remodeled amazing condo close to just about everything. The renovated kitchen features stainless
-                    steel appliances and a updated counter. Open floor-plan is great for entertainment. Light and bright
-                    finishes that will make you fall in love with this property when you walk in! 1 car attached garage.
-                    The home also features a separate full sized laundry room with appliances included. Relax in the
-                    community pool and spa. This home is a must see
-                </p>
+                <p><%= property.headline %></p>
                 <table>
                     <tr>
                         <td class="category">HOA Dues</td>
-                        <td class="information">HOA Dues</td>
-                        <td class="category">HOA Dues</td>
-                        <td class="information">HOA Dues</td>
+                        <td class="information"><%= property.hoadues %></td>
+                        <td class="category">Property Type</td>
+                        <td class="information"><%= property.propertytype %></td>
                     </tr>
-                    <tr></tr>
+                    <tr>
+                        <td class="category">Community</td>
+                        <td class="information"><%= property.community %></td>
+                        <td class="category">County</td>
+                        <td class="information"><%= property.county %></td>
+                    </tr>
+                    <tr>
+                        <td class="category">MLS#</td>
+                        <td class="information"><%= property.mlshash %></td>
+                    </tr>
                 </table>
+            <hr style="border-top: dotted 1px;" />
+                <div style="text-align: left; padding: 5px; width: 50%; float: left;">
+                    <h4 style="font-weight: bold; color: gray">Listing provided courtesy of</h4>
+                    <h4><%= property.agent %><br /><br /><%= property.bre %></h4>
+                </div>
+                <div style="text-align: right; padding: 5px; float: right">
+                    <h4 style="font-weight: bold; color: gray">Source</h4>
+                    <h4><%= property.source %></h4>
+                </div>
             </div>
             <div style="float: left; text-align: center; width: 35%; height: 100%; margin-left: 3%; box-sizing: border-box;">
                 <div style="box-sizing: border-box; height: 50%; width: 100%">
                     <div style="width: 100%; height: auto;">
-                        <div style="width: 100%; height: auto;">
-                            <h4>Go Tour This Home.</h4>
-                        </div>
-                        <div style="height: auto; width: 100%; ">
+                        <!--<div style="width: 100%; height: auto;">-->
+                            <!--<h4>Go Tour This Home.</h4>-->
+                        <!--</div>-->
+                        <!--<div style="height: auto; width: 100%; ">-->
 
-                            <span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>
-                            <div class="btn-group btn-group-justified" role="group" aria-label="..." style="height: 100%; width: 70%; display: inline-block;">
-                                <button type="button" class="scheduler">Left</button>
-                                <button type="button" class="scheduler">Middle</button>
-                                <button type="button" class="scheduler">Right</button>
+                            <!--<span class="glyphicon glyphicon-menu-left" aria-hidden="true"></span>-->
+                            <!--<div class="btn-group btn-group-justified" role="group" aria-label="..." style="height: 100%; width: 70%; display: inline-block;">-->
+                                <!--<button type="button" class="scheduler">Left</button>-->
+                                <!--<button type="button" class="scheduler">Middle</button>-->
+                                <!--<button type="button" class="scheduler">Right</button>-->
                             </div>
                             <!--<div style="height: 100%; width: 68%; display: inline-block;">-->
                                 <!--<div style="height: 100%; width: 32%; min-height: 50px; max-height: 100px; display: inline-block; border: 1px solid #000000">-->
@@ -87,77 +101,606 @@
                                     <!--Ka-->
                                 <!--</div>-->
                             <!--</div>-->
-                            <span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>
-                        </div>
-                    </div>
+                            <!--<span class="glyphicon glyphicon-menu-right" aria-hidden="true"></span>-->
+                        <!--</div>-->
+                    <!--</div>-->
                     <div id="google-map-container">
+                    </div>
                 </div>
-            </div>
-            <div>
             </div>
         </div>
     </section>
     <section id="propdetails" class="no-padding" style="display: flex;">
-        <div class="container-fluid" style="margin-left: auto; margin-right: auto; width: 80%; height: 80%">
+        <div class="container-fluid sectioncontainer">
             <h2>Property Details</h2>
-            <div style="width: 100%; height: 100%">
-                <div style="width: 100%; height: auto; background-color: #afd9ee; border-color: #000000">
-                    <p style="padding: 15px 15px 15px 15px;">Interior Features</p>
+            <div style="width: 100%; height: 100%; border: gray solid thin">
+                <div class="featureheadingdiv">
+                    <p style="padding: 15px;">Interior Features</p>
                 </div>
-                <div style="width: 100%; height: auto; background-color: #ffffff; border-color: #000000;">
-                    <div style="padding: 15px 15px 15px 15px; height: 100%; width: 33%; display:inline-block;">
-                        <ul style="padding-top: 10px"><p style="font-weight: bold;">Bedroom Information</p>
-                            <li># of Bedrooms (Minimum): 2</li>
-                            <li># of Bedrooms (Maximum): 3</li>
+                <div class="mainfeaturesdiv">
+                    <div class="featuresdiv">
+                        <ul><p>Bedroom Information</p>
+                            <li># of Bedrooms (Minimum): <%= property.propertydetails.interiorfeatures.bedroominformation.minimum %></li>
+                            <li># of Bedrooms (Maximum): <%= property.propertydetails.interiorfeatures.bedroominformation.maximum %></li>
                         </ul>
-                        <ul style="padding-top: 10px"><p style="font-weight: bold;">Bathroom Information</p>
-                            <li># of Bathrooms (Full): 2</li>
-                            <li># of Bathrooms (1/2): 1</li>
-                            <li>Bathroom Description: Shower and Tub, Tub, Updated Bath(s)</li>
-                        </ul>
-                    </div>
-                    <div style="padding: 0px 15px 15px 15px; height: 100%; width: 33%; display:inline-block;">
-                        <ul style="padding-top: 10px"><p style="font-weight: bold;">Bedroom Information</p>
-                            <li># of Bedrooms (Minimum): 2</li>
-                            <li># of Bedrooms (Maximum): 3</li>
-                        </ul>
-                        <ul style="padding-top: 10px"><p style="font-weight: bold;">Bathroom Information</p>
-                            <li># of Bathrooms (Full): 2</li>
-                            <li># of Bathrooms (1/2): 1</li>
-                            <li>Bathroom Description: Shower and Tub, Tub, Updated Bath(s)</li>
+                        <ul><p>Bathroom Information</p>
+                            <li># of Bathrooms (Full): <%= property.propertydetails.interiorfeatures.bathroominformation.full %></li>
+                            <li># of Bathrooms (1/2): <%= property.propertydetails.interiorfeatures.bathroominformation.half %></li>
+                            <li>Bathroom Description: <%= property.propertydetails.interiorfeatures.bedroominformation.description %></li>
                         </ul>
                     </div>
-                    <div style="padding: 0px 15px 15px 15px; height: 100%; width: 33%; display:inline-block;">
-                        <ul style="padding-top: 10px"><p style="font-weight: bold;">Bedroom Information</p>
-                            <li># of Bedrooms (Minimum): 2</li>
-                            <li># of Bedrooms (Maximum): 3</li>
+                    <div class="featuresdiv">
+                        <ul><p>Room Information</p>
+                            <li>Dining Room Description: <%= property.propertydetails.interiorfeatures.roominformation.diningroomdescription %></li>
+                            <li>Kitchen Description: <%= property.propertydetails.interiorfeatures.roominformation.kitchendescription %></li>
                         </ul>
-                        <ul style="padding-top: 10px"><p style="font-weight: bold;">Bathroom Information</p>
-                            <li># of Bathrooms (Full): 2</li>
-                            <li># of Bathrooms (1/2): 1</li>
-                            <li>Bathroom Description: Shower and Tub, Tub, Updated Bath(s)</li>
+                        <ul><p>Interior features</p>
+                            <li>Laundry: <%= property.propertydetails.interiorfeatures.interiorfeatures.laundry %></li>
+                            <li>Flooring: <%= property.propertydetails.interiorfeatures.interiorfeatures.flooring %></li>
+                        </ul>
+                    </div>
+                    <div class="featuresdiv">
+                        <ul><p>Fireplace Information</p>
+                            <li>Has Fireplace: <%= property.propertydetails.interiorfeatures.fireplaceinformation.flooring %></li>
+                            <li>Fireplace Description: <%= property.propertydetails.interiorfeatures.fireplaceinformation.fireplacedescription %></li>
+                            <li>Fireplaces (Minimum): <%= property.propertydetails.interiorfeatures.fireplaceinformation.minimum %></li>
+                        </ul>
+                        <ul><p>Heating and cooling information</p>
+                            <li>Cooling: <%= property.propertydetails.interiorfeatures.heatingcoolinginformation.cooling %></li>
+                            <li>Heating: <%= property.propertydetails.interiorfeatures.heatingcoolinginformation.heating %></li>
                         </ul>
                     </div>
                 </div>
+                <div class="featureheadingdiv">
+                    <p style="padding: 15px">Parking / Garage, Multi-Unit Information, Homeowners Association, School / Neighborhood</p>
+                </div>
+                <div class="mainfeaturesdiv">
+                    <div class="featuresdiv">
+                        <ul><p>Parking Information</p>
+                            <li>Garage (Minimum): <%= property.propertydetails.parkinggaragefeatures.parkinginformation.minimum %></li>
+                            <li>Garage (Maximum): <%= property.propertydetails.parkinggaragefeatures.parkinginformation.maximum %></li>
+                            <li>Parking Description: <%= property.propertydetails.parkinggaragefeatures.parkinginformation.parkingdescription %></li>
+                            <li>Garage Spaces: <%= property.propertydetails.parkinggaragefeatures.parkinginformation.garagespaces %></li>
+                            <li>Parking Spaces: <%= property.propertydetails.parkinggaragefeatures.parkinginformation.parkingspaces %></li>
+                        </ul>
+                    </div>
+                    <div class="featuresdiv">
+                        <ul><p>Multi Unit Information</p>
+                            <li># of Stories: <%= property.propertydetails.parkinggaragefeatures.multiunitinformation.stories %></li>
+                            <li># of Units in Complex (Minimum): <%= property.propertydetails.parkinggaragefeatures.multiunitinformation.units %></li>
+                        </ul>
+                        <ul><p>HOA Information</p>
+                            <li>Has HOA: <%= property.propertydetails.parkinggaragefeatures.hoainformation.hashoa %></li>
+                            <li>Fees Include: <%= property.propertydetails.parkinggaragefeatures.hoainformation.feesinclude %><</li>
+                            <li>HOA Fee: <%= property.propertydetails.parkinggaragefeatures.hoainformation.hoafee %><</li>
+                            <li>HOA Name: <%= property.propertydetails.parkinggaragefeatures.hoainformation.hoaname %><</li>
+                            <li>HOA Primary Phone: <%= property.propertydetails.parkinggaragefeatures.hoainformation.hoaphone %><</li>
+                        </ul>
+                    </div>
+                    <div class="featuresdiv">
+                        <ul><p>School Information</p>
+                            <li>Elementary School District: <%= property.propertydetails.parkinggaragefeatures.schoolinformation.elementary %></li>
+                            <li>High School District: <%= property.propertydetails.parkinggaragefeatures.schoolinformation.highschool %></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="featureheadingdiv">
+                    <p style="padding: 15px">Exterior Features</p>
+                </div>
+                <div class="mainfeaturesdiv">
+                    <div class="featuresdiv">
+                        <ul><p>Exterior Features</p>
+                            <li>Roof: <%= property.propertydetails.exteriorfeatures.exteriorfeatures.roof %></li>
+                        </ul>
+                    </div>
+                    <div class="featuresdiv">
+                        <ul><p>Building Information</p>
+                            <li>Construction Type: <%= property.propertydetails.exteriorfeatures.buildinginformation.constructiontype %></li>
+                            <li><%= property.propertydetails.exteriorfeatures.buildinginformation.foundation %></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="featureheadingdiv">
+                    <p style="padding: 15px">Utilities</p>
+                </div>
+                <div class="mainfeaturesdiv">
+                    <div class="featuresdiv">
+                        <ul><p>Utitlities Information</p>
+                            <li>Sewer Septic: <%= property.propertydetails.utilities.utilitiesinformation.sewer %></li>
+                            <li>Utilities: <%= property.propertydetails.utilities.utilitiesinformation.utilities %></li>
+                        </ul>
+                    </div>
+                    <div class="featuresdiv">
+                        <ul><p>Water Features</p>
+                            <li>Water: <%= property.propertydetails.utilities.water.water %></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="featureheadingdiv">
+                    <p style="padding: 15px">Taxes / Assessments, Location Details, Misc. Information</p>
+                </div>
+                <div class="mainfeaturesdiv">
+                    <div class="featuresdiv">
+                        <ul><p>Tax/Assessment Information</p>
+                            <li>City Transfer Tax: <%= property.propertydetails.tax.taxinformation.citytransfertax %></li>
+                        </ul>
+                        <ul><p>Location Information</p>
+                            <li>Directions: <%= property.propertydetails.tax.taxinformation.locationinformation %></li>
+                        </ul>
+                    </div>
+                    <div class="featuresdiv">
+                        <ul><p>Miscellaneous Information</p>
+                            <li>Incorporated: <%= property.propertydetails.tax.miscallaneousinformation.incorporated %></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="featureheadingdiv">
+                    <p style="padding: 15px">Property / Lot Details</p>
+                </div>
+                <div class="mainfeaturesdiv">
+                    <div class="featuresdiv">
+                        <ul><p>Property Features</p>
+                            <li>Amenities: <%= property.propertydetails.lotdetails.propfeatures.amenities %></li>
+                            <li>Living Sq. Ft.: <%= property.propertydetails.lotdetails.propfeatures.livingsqft %></li>
+                        </ul>
+                        <ul><p>Property Information</p>
+                            <li>Ownership Type: <%= property.propertydetails.lotdetails.propertyinformation.ownershiptype %>t</li>
+                            <li>Restrictions: <%= property.propertydetails.lotdetails.propertyinformation.restrictions %></li>
+                        </ul>
+                    </div>
+                    <div class="featuresdiv">
+                        <ul><p>Lot Information</p>
+                            <li>Lot Size Area Minimum Units: <%= property.propertydetails.lotdetails.lotinformation.minsize %></li>
+                            <li>Lot Size Area Maximum Units: <%= property.propertydetails.lotdetails.lotinformation.maxsize %></li>
+                            <li>Lot Size Source: <%= property.propertydetails.lotdetails.lotinformation.source %></li>
+                            <li>Zoning: <%= property.propertydetails.lotdetails.lotinformation.zoning %></li>
+                        </ul>
+                    </div>
+                </div>
+                <h6>Details provided by MLSListings and may not match the public record</h6>
+            </div>
+        </div>
+    </section>
+    <br />
+    <br />
+    <br />
+    <section class="no-padding" style="display: flex;" id="tourinsights">
+        <div class="container-fluid sectioncontainer">
+            <h2>Redfin Tour Insights for 470 N Winchester Blvd #202</h2>
+            <div style="border: thin solid lightgray; padding: 20px;">
+                <span class="glyphicon glyphicon-pushpin" aria-hidden="true" style="color: gray"></span>
+                <h3><%= property.tourinsights.name %></h3>
+                <h5><%= property.tourinsights.description %></h5>
+            </div>
+        </div>
+    </section>
+    <br />
+    <br />
+    <br />
+    <section class="no-padding" style="display: flex;" id="prophistory">
+        <div class="container-fluid sectioncontainer">
+            <h2>Property History for 470 N Winchester Blvd #202</h2>
+            <table style="border: solid thin lightgray; width: 100%">
+                <thead style="background-color: lightgray">
+                    <tr>
+                        <td class="date">Date</td>
+                        <td class="Event">Event</td>
+                        <td class="Price">Price</td>
+                        <td class="Appreciation">Appreciation</td>
+                        <td class="source">Source</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < property.propertyhistory.length; i++) { %>
+                        <tr>
+                            <td class="date"><%= property.propertyhistory[i].date %></td>
+                            <td class="Event"><%= property.propertyhistory[i].event %></td>
+                            <td class="Price"><%= property.propertyhistory[i].price %></td>
+                            <td class="Appreciation"><%= property.propertyhistory[i].appreciation %></td>
+                            <td class="source"><%= property.propertyhistory[i].source %></td>
+                        <tr>
+                    <% } %>
+                </tbody>
+            </table>
+            <h6>For completeness, Redfin often displays two records for one sale: the MLS record and the public record</h6>
+        </div>
+    </section>
+    <br />
+    <br />
+    <br />
+    <section class="no-padding" style="display: flex;" id="pubrecords">
+        <div class="container-fluid sectioncontainer">
+            <h2>Public Records for for 470 N Winchester Blvd #202</h2>
+            <br />
+            <h5>Public records are from Santa Clara County and may not match the MLS record. Information deemed reliable not guaranteed. Buyer to verify all information</h5>
+            <br />
+            <h3>Basic Info</h3>
+            <div style="border: thin solid lightgray; padding: 20px;">
+                <table style="width: 100%; border-bottom: dashed thin lightgray">
+                    <tbody>
+                        <tr>
+                            <td class="category">Beds</td>
+                            <td class="information"><%= property.publicrecords.beds %></td>
+                            <td class="category">Style</td>
+                            <td class="information"><%= property.publicrecords.style %></td>
+                        </tr>
+                        <tr>
+                            <td class="category">Baths</td>
+                            <td class="information"><%= property.publicrecords.baths %></td>
+                            <td class="category">Finished Sq. Ft.</td>
+                            <td class="information"><%= property.publicrecords.finishedsqft %></td>
+                        </tr>
+                        <tr>
+                            <td class="category">Floors</td>
+                            <td class="information"><%= property.publicrecords.floors %></td>
+                            <td class="category">Unfinished Sq. Ft.</td>
+                            <td class="information"><%= property.publicrecords.unfinishedsqft %></td>
+                        </tr>
+                        <tr>
+                            <td class="category">Year Built</td>
+                            <td class="information"><%= property.publicrecords.yearbuilt %></td>
+                            <td class="category">Total Sq. Ft.</td>
+                            <td class="information"><%= property.publicrecords.totalsqft %></td>
+                        </tr>
+                        <tr>
+                            <td class="category">Year Renovated</td>
+                            <td class="information"><%= property.publicrecords.yearrenovated %></td>
+                            <td class="category">Lot Size</td>
+                            <td class="information"><%= property.publicrecords.lotsize %></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <tbody>
+                        <tr>
+                            <td class="category" style="width: 16%">County</td>
+                            <td class="information" style="width: 17%"><%= property.publicrecords.county %></td>
+                            <td class="category" style="width: 16%">APN</td>
+                            <td class="information" style="width: 17%"><%= property.publicrecords.apn %></td>
+                            <td class="category" style="width: 16%">County Data Refreshed</td>
+                            <td class="information" style="width: 17%"  ><%= property.publicrecords.datarefresh %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <br />
+    <br />
+    <br />
+    <section class="no-padding" style="display: flex;" id="schools">
+        <div class="container-fluid sectioncontainer">
+            <h2>Schools for 470 N Winchester Blvd #202</h2>
+            <br />
+            <h5>School data provided by GreatSchools. School service boundaries are intended to be used as reference only. To verify enrollment eligibility for a property, contact the school directly.</h5>
+            <br />
+            <div class="btn-group btn-group-justified" role="group" aria-label="..." style="width: 50%; margin-left: 25%;">
+                <a type="button" href="#serving" class="btn btn-default schoolbtn"  >Serving this home</a>
+                <a href="#elementary" type="button" class="btn btn-default schoolbtn">Elementary</a>
+                <a href="#middle" type="button" class="btn btn-default schoolbtn">Middle</a>
+                <a href="#high" type="button" class="btn btn-default schoolbtn">High</a>
+            </div>
+            <br />
+            <br />
+            <br />
+            <% var allschools = Object.keys(property.schools); %>
+            <% for (i = allschools.length - 1; i > 0; i--) { %>
+                <div id="<%= property.schools.divids[i-1] %>" class="schooldiv">
+                    <table style="border: solid thin lightgray; width: 100%">
+                        <thead style="background-color: lightgray; padding: 10px; width: 100%">
+                            <tr>
+                                <td valign="middle" class="schserves">Serves Home</td>
+                                <td class="schname">Schools Name and Rating</td>
+                                <td class="schtype">Type</td>
+                                <td class="schgrades">Grades</td>
+                                <td class="schparrat">n/<a href=""></a></td>
+                                <td class="schdistance">Distance</td>
+                            </tr>
+                        </thead>
+                        <tbody style="padding: 10px; width: 100%">
+                            <% var school = allschools[i];%>
+                            <% var schoolrec = property.schools[school];%>
+                            <% for (j = 0; j < schoolrec.length; j++) { %>
+                                <tr>
+                                    <% if(schoolrec[j].serveshome) { %>
+                                        <td class="schserves">
+                                            <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+                                        </td>
+                                    <% } else { %>
+                                        <td class="schserves">--</td>
+                                    <% } %>
+                                    <% if(schoolrec[j].rating === -1) { %>
+                                        <td class="schname"><%= schoolrec[j].name %></td>
+                                    <% } else { %>
+                                        <td class="schname">
+                                            <div><%= schoolrec[j].rating %></div>
+                                            <%= schoolrec[j].name %>
+                                        </td>
+                                    <% } %>
+                                    <td class="schtype"><%= schoolrec[j].type %></td>
+                                    <td class="schgrades"><%= schoolrec[j].grades %></td>
+                                    <td class="schparrat"><%= schoolrec[j].parentrating %></td>
+                                    <td class="schdistance"><%= schoolrec[j].distance %></td>
+                                <tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            <% } %>
+        </div>
+    </section>
+    <section id="neighborhood" class="no-padding" style="display: flex;">
+        <div class="container-fluid sectioncontainer">
+            <h2>Neighborhood for 470 N Winchester Blvd #202</h2>
+            <br />
+            <br />
+            <h3>Area overview for 95050</h3>
+            <br />
+            <h3>Transportation in 95050</h3>
+            <br />
+            <br />
+            <div>Icons made by <a href="http://www.flaticon.com/authors/scott-de-jonge" title="Scott de Jonge">Scott de Jonge</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a>             is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a></div>
+            <br />
+            <br />
+            <div class="progressradials" style="width: 80%; display: flex; margin: auto">
+                <div class="progress-radial setsize progress-<%= property.transportation.walk %>" id="walkscore">
+                    <div class="overlay setsize radialoverlay">
+                        <img src="/images/man-silhouette1.svg" />
+                        <p id="walkscorelabel"><%= property.transportation.walk %>%</p>
+                    </div>
+                </div>
+
+                <div class="progress-radial setsize progress-<%= property.transportation.transit%>" id="transitscore">
+                    <div class="overlay setsize radialoverlay">
+                        <img src="/images/cycling.svg"/>
+                        <p id="transitscorelabel"><%= property.transportation.transit %>%</p>
+                    </div>
+                </div>
+
+                <div class="progress-radial setsize progress-<%= property.transportation.bike %>" id="bikescore">
+                    <div class="overlay setsize radialoverlay">
+                        <img src="/images/train4.svg" />
+                        <p id="bikescorelabel"><%= property.transportation.bike %>%</p>
+                    </div>
+                </div>
+            </div>
+            <br />
+            <br />
+            <div style="width: 50%; margin: auto; text-align: center; color: gray"><%= property.transportation.description %></div>
+            <br />
+            <div id="sales">
+                <h4>95050 Real Estate Sales <i>(Last 90 days)</i></h4>
+                <table style="background-color: #e7e7e7; border: thin solid lightgray;">
+                    <tbody>
+                        <tr>
+                            <td class="category areasales">Median List Price</td>
+                            <td class="information"><%= property.realestatesales.medianlistprice %></td>
+                            <td class="category">Avg # Offers</td>
+                            <td class="information"><%= property.realestatesales.avgoffers %></td>
+                        </tr>
+                        <tr>
+                            <td class="category areasales">Median $ / Sq. Ft.</td>
+                            <td class="information"><%= property.realestatesales.mediandolpersqft %></td>
+                            <td class="category">Avg Down Payment</td>
+                            <td class="information"><%= property.realestatesales.avgdown %></td>
+                        </tr>
+                        <tr>
+                            <td class="category areasales">Median Sale / List</td>
+                            <td class="information"><%= property.realestatesales.mediansalelist %></td>
+                            <td class="category"># Sold homes</td>
+                            <td class="information"><%= property.realestatesales.soldhomes %></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <br />
+            <br />
+            <br />
+            <h4> What it takes to Win an Offer near 95050</h4>
+            <% for (i = 0; i < property.agents.length; i++) { %>
+            <% var agent = property.agents[i] %>
+                <div class="offerdetails">
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td style="width: 70%;">
+                                    <table style="width: 50%;" class="offerhomedetails">
+                                        <tbody>
+                                        <tr>
+                                            <td class="offerhome"><span class="glyphicon glyphicon-home headericon homeicon" aria-hidden="true"></span></td>
+                                            <td class="offerhome">
+                                                <h4><strong><%= agent.price %></strong></h4>
+                                                <h5>Price</h5>
+                                            </td>
+                                            <td class="offerhome">
+                                                <h4><strong><%= agent.beds %></strong></h4>
+                                                <h5>Beds</h5>
+                                            </td>
+                                            <td class="offerhome">
+                                                <h4><strong><%= agent.baths %></strong></h4>
+                                                <h5>Baths</h5>
+                                            </td>
+                                            <td class="offerhome">
+                                                <h4><strong><%= agent.sqft %></strong></h4>
+                                                <h5>Sq. Ft.</h5>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                    <div class="offerhomedetails">
+                                        <h4 style="text-align: center"><i><%= agent.quote %></i>
+                                        </h4>
+                                    </div>
+                                    <div class="offerhomedetails">
+                                        <img src="<%= agent.picture %>"/>
+                                        <h3 style="color: dodgerblue"><%= agent.agent %></h3>
+                                        <h3 style="color: maroon">HOMESEARCH Agent</h3>
+                                    </div>
+                                </td>
+                                <td class="hidden-xs hidden-sm">
+                                    <% if (agent.winningoffer === false) { %>
+                                        <div class="offerhomedetails">
+                                            <h5 style="text-transform: uppercase">OFFER NOT ACCEPTED</h5>
+                                        </div>
+                                    <% } else { %>
+                                        <div class="offerhomedetails">
+                                            <h5 style="text-transform: uppercase;">
+                                                <mark style="background-color: lawngreen">WINNING OFFER</mark>
+                                            </h5>
+                                        </div>
+                                    <% } %>
+                                    <table class="offerhomedetails">
+                                        <tbody>
+                                        <tr>
+                                            <td class="offervalue"><%= agent.offertolist %></td>
+                                            <td class="offercategory">Offer-to-list Ratio</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="offervalue"><%= agent.dom %></td>
+                                            <td class="offercategory">Days on market</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="offervalue"><%= agent.competeoffer %></td>
+                                            <td class="offercategory">Competing Offer</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="offervalue"><%= agent.downpayment %></td>
+                                            <td class="offercategory">Down Payment</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            <br />
+            <% } %>
+            <br />
+            <br />
+            <h4> Median Real Estate Values</h4>
+            <div id="medianvals">
+                <table style="border: solid thin lightgray; width: 50%">
+                    <thead style="background-color: lightgray; padding: 10px; width: 100%">
+                        <tr>
+                            <td class="median location medhead">Location</td>
+                            <td class="median medhead">List Price</td>
+                            <td class="median medhead">$ / Sq. Ft.</td>
+                            <td class="median medhead">Sale / List</td>
+                        </tr>
+                    </thead>
+                    <tbody style="padding: 10px; width: 100%">
+                        <% for (i = 0; i < property.medianrev.length; i++) { %>
+                        <% var record = property.medianrev[i]; %>
+                            <tr>
+                                <td class="median location"><%= record.location %></td>
+                                <td class="median"><%= record.listprice %></td>
+                                <td class="median"><%= record.dolpersqft %></td>
+                                <td class="median"><%= record.salelist %></td>
+                            <tr>
+                        <% } %>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <br />
+    <br />
+    <br />
+    <section class="no-padding" style="display: flex;" id="similarhomes">
+        <div class="container-fluid sectioncontainer">
+            <h2>Similar Homes for 470 N Winchester Blvd #202</h2>
+            <br />
+            <br />
+            <div class="row no-gutter">
+                <% for (i = 0; i < property.similarhomes.length; i++) { %>
+                <% var simhome = property.similarhomes[i]; %>
+                    <div class="col-lg-4 col-sm-6 simhomes">
+                        <a href="#" class="portfolio-box">
+                            <img src="<%= simhome.img %>" class="img-responsive" alt="">
+                            <div class="portfolio-box-caption">
+                                <div class="portfolio-box-caption-content">
+                                    <table style="margin-left: 5%">
+                                        <tr>
+                                            <td class="simhomcategory simhomefirst"><%= simhome.price %></td>
+                                            <td class="simhomcategory"><%= simhome.beds %></td>
+                                            <td class="simhomcategory"><%= simhome.baths %></td>
+                                            <td class="simhomcategory"><%= simhome.sqft %></td>
+                                        </tr>
+                                        <td class="simhomspec simhomefirst"><%= simhome.addrline1 %></td>
+                                        <td class="simhomspec">Beds</td>
+                                        <td class="simhomspec">Baths</td>
+                                        <td class="simhomspec">Sq. Ft</td>
+                                        <tr>
+                                            <td class="simhomaddr"><%= simhome.addrline2 %></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                <% } %>
+            </div>
+        </div>
+    </section>
+    <br />
+    <br />
+    <br />
+    <section class="no-padding" style="display: flex;" id="tourinsights">
+        <div class="container-fluid" style="margin-left: auto; margin-right: auto; width: 80%; height: 80%">
+            <div style="text-align: center">
+                <h4><i>Thank You</i></h4>
             </div>
         </div>
     </section>
     <% include jsinclusions.ejs %>
     <script type="text/javascript">
+
+        $( document ).ready(function() {
+            $(".setsize").each(function() {
+                $(this).height($(this).width());
+            });
+        });
+        $(window).on('resize', function(){
+            $(".setsize").each(function() {
+                $(this).height($(this).width());
+            });
+        });
+
+
         function initMap() {
             var map = new google.maps.Map(document.getElementById('google-map-container'), {
-                center: new google.maps.LatLng(37.5,-122),
+                center: new google.maps.LatLng(37.5, -122),
                 scrollwheel: false,
                 zoom: 8,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
+                mapTypeId: google.maps.MapTypeId.ROADMAP
             });
             var latitude = 37.5;
             var longitude = -122;
-            var marker=new google.maps.Marker({
-                position:new google.maps.LatLng(latitude, longitude),
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(latitude, longitude)
+            });
+            var ctaLayer = new google.maps.KmlLayer({
+                url: 'http://localhost:3000/images/maps/cb_2014_us_zcta510_500k.kml',
+                map: map
             });
             marker.setMap(map);
-            }
+
+            var map = new google.maps.Map(document.getElementById('mapcon'), {zoom: 8});
+            var geocoder = new google.maps.Geocoder;
+            geocoder.geocode({'address': '95050'}, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    map.setCenter(results[0].geometry.location);
+                    new google.maps.Marker({
+                        map: map,
+                        position: results[0].geometry.location
+                    });
+                } else {
+                    window.alert('Geocode was not successful for the following reason: ' +
+                    status);
+                }
+            });
+        }
         google.maps.event.addDomListener(window, 'load', initMap);
     </script>
   </body>
