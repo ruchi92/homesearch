@@ -88,6 +88,7 @@ db.propdetails.insert({
         }
     }, 
     addressfirstline: "470 N Winchester Blvd #202",
+    zip: 95050,
     addresssecondline: "SAN JOSE, CA 95117",
     status: "pending: Donot Show",
     listprice: "$777000",
@@ -168,5 +169,5 @@ db.propdetails.insert({
         {img: "/images/simhome3.jpg", price: "$700,500", beds: 3, baths: 2.5, sqft: "1,457", addrline1: "887 Northlake Ave", addrline2: "San Jose, CA 95117"},
         {img: "/images/simhome4.jpg", price: "$625,500", beds: 3, baths: 1.5, sqft: "1,122", addrline1: "235, Kylie Boulevard", addrline2: "San Jose, CA 95117"}
     ]
-    })
+    });
 
