@@ -138,6 +138,7 @@ body {
     background-image: none;
     background-color: coral;
     border-radius: 10px !important;
+    padding: 10px;
 }
 
 .schooldiv, .schooldiv:target ~ #serving {
