@@ -1,0 +1,277 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <% include inclusions.ejs %>
+    <!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>-->
+    <script src="/javascripts/highcharts.js">
+    </script>
+    <script src="/javascripts/highcharts-3d.js">
+    </script>
+    <script src="/javascripts/exporting.js">
+    </script>
+    <script src="/javascripts/highcharts-more.js">
+    </script>
+    <script src="/javascripts/funnel.js">
+    </script>
+
+    <!--<link rel="stylesheet" type="text/css" href="/stylesheets/bootstrap.min.css">-->
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <!--<% include jsinclusions.ejs%>-->
+
+    <script type="text/javascript">
+
+        $(function () {
+            <% if (currentPage == 1) { %>
+            var resultArr = [];
+            <% result.forEach(function(user){ %>
+                resultArr = resultArr.concat(<%= user.percent %>);
+            <% })
+            %>
+
+            $('#container').highcharts({
+                chart: {
+                    type: 'pie',
+                    options3d: {
+                        enabled: true,
+                        alpha: 45,
+                        beta: 0
+                    }
+                },
+                title: {
+                    text: 'Houses by type'
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        depth: 35,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.name}'
+                        }
+                    }
+                },
+                series: [{
+                    type: 'pie',
+                    name: 'Houses by type',
+                    data: [
+                        ['Condo',   resultArr[0]],
+                        ['Town House',       resultArr[1]],
+                        ['Apartment',    resultArr[2]],
+                        ['Individual House',     resultArr[3]]
+                    ]
+                }]
+            });
+            <% } %>
+        });
+
+        $(function () {
+            <% if (currentPage == 2) { %>
+            var singleArr = [];
+            var condoArr = [];
+            var xArr = [];
+
+
+            <% for(var i=4; i < result.length; i++) { %>
+                xArr = xArr.concat('<%= result[i].mthYr %>');
+            <% }
+            %>
+            <% for(var i=4; i < result.length; i++) { %>
+            singleArr = singleArr.concat(<%= result[i].unitsSingle %>);
+            <% }
+            %>
+
+
+            <% for(var i=4; i < result.length; i++) { %>
+            condoArr = condoArr.concat(<%= result[i].unitsCondo %>);
+            <% }
+            %>
+            $('#container').highcharts({
+
+                chart: {
+                    type: 'column',
+                    options3d: {
+                        enabled: true,
+                        alpha: 15,
+                        beta: 15,
+                        viewDistance: 25,
+                        depth: 40
+                    },
+                    marginTop: 80,
+                    marginRight: 40
+                },
+
+                title: {
+                    text: 'San Francisco Listing Inventory - March 2014 to March 2015'
+                },
+
+                xAxis: {
+                    categories: xArr
+                },
+
+                yAxis: {
+                    allowDecimals: false,
+                    min: 0,
+                    title: {
+                        text: 'Number of housing units'
+                    }
+                },
+
+                tooltip: {
+                    headerFormat: '<b>{point.key}</b><br>',
+                    pointFormat: '<span style="color:{series.color}">\u25CF</span> {series.name}: {point.y} / {point.stackTotal}'
+                },
+
+                plotOptions: {
+                    column: {
+                        stacking: 'normal',
+                        depth: 40
+                    }
+                },
+
+                series: [{
+                    name: 'Single Family homes',
+                    data: singleArr,
+                    stack: 'a'
+                }, {
+                    name: 'Condoniums',
+                    data: condoArr,
+                    stack: 'a'
+                }]
+            });
+            <% } %> //end if page =2
+        });
+
+            $(function () {
+            //Area chart
+
+            <% if (currentPage == 3) { %>
+            var resultArr1 = [];
+            var xArr1 = [];
+
+            <% for(var i=17; i < result.length; i++) { %>
+                xArr1 = xArr1.concat('<%= result[i].mthYr1 %>');
+            <% }
+            %>
+
+
+            <% for(var i=17; i < result.length; i++) { %>
+                resultArr1 = resultArr1.concat(<%= result[i].msi %>);
+            <% }
+            %>
+
+                $('#container').highcharts({
+                chart: {
+                    type: 'area'
+                },
+                title: {
+                    text: 'San Francisco House and Condo Market: Months Supply of Inventory(MSI)'
+                },
+                xAxis: {
+                    categories: xArr1
+                },
+                credits: {
+                    enabled: false
+                },
+                series: [{
+                    data: resultArr1
+                }]
+            });
+            <% } %> //end if page 3
+
+
+//Funnel chart
+         <% if (currentPage == 4) { %>
+
+                var resultArrFunnel = [];
+                var xArrFunnel = [];
+
+                <% for(var i=44; i < result.length; i++) { %>
+                    xArrFunnel = xArrFunnel.concat('<%= result[i].city %>');
+                <% }
+                %>
+
+                <% for(var i=44; i < result.length; i++) { %>
+                    resultArrFunnel = resultArrFunnel.concat(<%= result[i].onSale %>);
+                <% }
+                %>
+
+            $('#container').highcharts({
+                chart: {
+                    type: 'funnel',
+                    marginRight: 100
+                },
+                title: {
+                    text: 'Number of houses on sale',
+                    x: -50
+                },
+                plotOptions: {
+                    series: {
+                        dataLabels: {
+                            enabled: true,
+                            format: '<b>{point.name}</b> ({point.y:,.0f})',
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black',
+                            softConnector: true
+                        },
+                        width: '40%',
+                        neckWidth: '16%',
+                        neckHeight: '25%'
+
+                        //-- Other available options
+                        // height: pixels or percent
+                        // width: pixels or percent
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Unique users',
+                    data: [[xArrFunnel[0],resultArrFunnel[0]],[xArrFunnel[1],resultArrFunnel[1]], [xArrFunnel[2],resultArrFunnel[2]], [xArrFunnel[3],resultArrFunnel[3]] ]
+                }]
+            });
+        <% } %>
+        });
+    </script>
+</head>
+<body>
+<% include header.ejs%>
+<div id="container" style="..."></div>
+
+    <br>
+    <br>
+<div align="center">
+    <% if (pageCount > 1) { %>
+    <ul class="pagination">
+        <% if (currentPage > 1) { %>
+        <li><a href="?page=1">&laquo;</a></li>
+        <% } %>
+        <% var i = 1;
+            if (currentPage > 5) {
+                i = +currentPage - 4;
+            } %>
+        <% if (i !== 1) { %>
+        <li class="disabled"><a href="#">...</a></li>
+        <% } %>
+        <% for (i; i<=pageCount; i++) { %>
+        <% if (currentPage == i) { %>
+        <li class="active"><span><%= i %> <span class="sr-only">(current)</span></span></li>
+        <% } else { %>
+        <li><a href="?page=<%= i %>"><%= i %></a></li>
+        <% } %>
+        <% if (i == (+currentPage + 4)) { %>
+        <li class="disabled"><a href="#">...</a></li>
+        <% break; } %>
+        <% } %>
+        <% if (currentPage != pageCount) { %>
+        <li><a href="?page=<%= pageCount %>">&raquo;</a></li>
+        <% } %>
+    </ul>
+    <% } %>
+</div>
+</body>
+</html>
