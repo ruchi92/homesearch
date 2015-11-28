@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Home Search Made Easy.!</title>
+    <% include inclusions.ejs %>
+    <link rel="stylesheet" href="/stylesheets/searchstyle.css">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <!--Range Sliders-->
+  </head>
+  <body  id="page-top">
+    <% include header.ejs %>
+    <section class="no-padding" style="display: flex; height: 100%" id="tourinsights">
+        <div id="searchdiv" style="width: 60em; height: 100%; float: left; box-sizing: border-box">
+            <div style="background-color: floralwhite; border: double lightgray;">
+                <div style="display: flex">
+                    <div style="width: 70%; float: left; box-sizing: border-box; padding-left: 10%; color: maroon; ">
+                        <h2>San Jose Real Estate</h2>
+                        <h4><strong>Showing 12 homes</strong></h4>
+                    </div>
+                    <div class="btn-group btn-group-justified" style="float: right; margin-right: 5%; width: 30%">
+                        <button style="padding: 10px; background-color: white; font-size: large; border:thin solid lightgray; text-decoration: underline; margin-top: 10%;">
+                            <a href="#about" data-link="first">Table</a>
+                        </button>
+                        <button style="padding: 10px; background-color: white; font-size: large; border:thin solid lightgray; text-decoration: underline; margin-top: 10%;">
+                            <a href="#about" data-link="second">Photos</a>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mapdiv" class="hidden-xs hidden-sm" style="width: 50%; height: 100%; box-sizing: border-box; float: left; position: absolute"></div>
+    </section>
+    <% include jsinclusions.ejs %>
+    <script style="text/javascript">
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('mapdiv'), {
+                center: new google.maps.LatLng(37.5, -122),
+                scrollwheel: false,
+                zoom: 8,
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            });
+            var latitude = 37.5;
+            var longitude = -122;
+            var marker = new google.maps.Marker({
+                position: new google.maps.LatLng(latitude, longitude)
+            });
+            var ctaLayer = new google.maps.KmlLayer({
+                url: 'http://localhost:3000/images/maps/cb_2014_us_zcta510_500k.kml',
+                map: map
+            });
+            marker.setMap(map);
+        }
+        google.maps.event.addDomListener(window, 'load', initMap);
+    </script>
+  </body>
+</html>
