@@ -1,3 +1,31 @@
+<script>
+    function signout(){
+        sessionStorage.removeItem('email');
+        if(document.getElementById('signout').innerHTML == "Sign Out!"){
+            window.history.back();
+            window.history.back();
+        }
+    }
+</script>
+<script>
+    function header_change(){
+        var email = sessionStorage.getItem('email');
+        console.log(email);
+        if(email != null){
+            console.log( document.getElementById('change').innerHTML);
+            var change_to = "Welcome  " + email + "  ";
+            document.getElementById('change').innerHTML = change_to;
+
+            document.getElementById('signout').innerHTML = "Sign Out!";
+
+        }
+        else{
+            sessionStorage.removeItem('email');
+        }
+    }
+
+</script>
+
 <nav class="navbar navbar-default">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -28,7 +56,7 @@
             <div style="float: right">
                 <div>
                     <p> Call: (555)1234 000 &nbsp&nbsp
-                        Sign In or Join HomeSearch
+                       <a href = "/login"  id = "change"> Sign In </a>or <a href = "/signup" id="signout" onclick="signout()">Join HomeSearch</a>
                     </p>
                 </div>
                 <div style="background-color: green">

@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
 
     <title>Elegant Login - Designscrazed</title>
+    <%include inclusions.ejs%>
     <style>
         body {
             background: url('http://i.imgur.com/Eor57Ae.jpg') no-repeat fixed center center;
@@ -105,24 +106,26 @@
         }
 
     </style>
+
     <script>
-        function session_storage(){
-            var name = document.getElementById("name");
-            var email = document.getElementById("email");
-            var password = document.getElementById("password");
-            var c_password = document.getElementById("c_password");
+         function session_storage(){
+                var name = document.getElementById("name");
+                var email = document.getElementById("email");
+                var password = document.getElementById("password");
+                var c_password = document.getElementById("c_password");
 
-            sessionStorage.setItem('name',name.value);
-            sessionStorage.setItem('email',email.value);
-            sessionStorage.setItem('password',password.value);
-            sessionStorage.setItem('c_password',c_password.value);
-        }
-    </script>
+                sessionStorage.setItem('name',name.value);
+                sessionStorage.setItem('email',email.value);
+                sessionStorage.setItem('password',password.value);
+                sessionStorage.setItem('c_password',c_password.value);
+            }
 
+
+        </script>
 </head>
 
-<body>
-
+<body onload = "header_change()">
+<%include header.ejs%>
 <br><br><br><br><br><br>
 <div class="login-block">
     <h1>Sign Up</h1>
@@ -135,6 +138,8 @@
         <br>
     </form>
 </div>
+
+<%include jsinclusions.ejs%>
 </body>
 
 </html>
