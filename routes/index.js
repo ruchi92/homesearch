@@ -67,5 +67,10 @@ var staticTxt = {
 
     }
 }
-
+router.get('/login', function(req, res, next) {
+    res.render('login', { langchange: langchange });
+});
+router.get('/signup', function(req, res, next) {
+    res.render('signup', { langchange: langchange });
+});
 module.exports = router;
