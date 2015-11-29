@@ -1,4 +1,13 @@
 <script>
+    function signout(){
+        sessionStorage.removeItem('email');
+        if(document.getElementById('signout').innerHTML == "Sign Out!"){
+            window.history.back();
+            window.history.back();
+        }
+    }
+</script>
+<script>
     function header_change(){
         var email = sessionStorage.getItem('email');
         console.log(email);
@@ -6,14 +15,15 @@
             console.log( document.getElementById('change').innerHTML);
             var change_to = "Welcome  " + email + "  ";
             document.getElementById('change').innerHTML = change_to;
-            var signout = 'Sign Out!';
-            document.getElementById('signout').innerHTML = signout;
+
+            document.getElementById('signout').innerHTML = "Sign Out!";
+
         }
         else{
-            sessionStorage.removeItem(email);
+            sessionStorage.removeItem('email');
         }
-
     }
+
 </script>
 
 <nav class="navbar navbar-default">
@@ -46,7 +56,7 @@
             <div style="float: right">
                 <div>
                     <p> Call: (555)1234 000 &nbsp&nbsp
-                       <a href = "/login"  id = "change"> Sign In </a>or <a href = "/signup" id="signout">Join HomeSearch</a>
+                       <a href = "/login"  id = "change"> Sign In </a>or <a href = "/signup" id="signout" onclick="signout()">Join HomeSearch</a>
                     </p>
                 </div>
                 <div style="background-color: green">
