@@ -1,0 +1,184 @@
+#searchdiv {
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+@media(max-width:768px) {
+    #searchdiv {
+        width: 100%;
+    }
+}
+
+#dataheader {
+    width: 70%;
+    float: left;
+    box-sizing: border-box;
+    padding-left: 10%;
+    color: maroon;
+}
+
+.tabbtn {
+    background-color: white;
+    font-size: large;
+    border:thin solid lightgray;
+    text-decoration: underline;
+}
+
+#staticimg, #photosimg {
+    width: 100%;
+    height: 50%;
+    box-sizing: border-box;
+    box-shadow: 2px 2px 2px 2px lightgray;
+    background-color: #f5f5f5;
+}
+
+#mapdiv {
+    width: 50%;
+    height: 100%;
+    box-sizing: border-box;
+    position: absolute;
+}
+
+.housesaleicon {
+    color: #ffffff;
+    background-color: maroon;
+    padding: 5px;
+}
+
+.bbsdd, .location, .addr, .price {
+    padding: 20px;
+    border-bottom: thin solid lightgray;
+    overflow: hidden;
+}
+
+thead > tr > td {
+    font-size: medium;
+    color: darkgray;
+}
+
+table {
+    table-layout: fixed;
+}
+
+tbody {
+    overflow-y: scroll;
+}
+
+
+.addr {
+    width: 22%;
+    text-align: left;
+}
+
+.decbutton {
+    width: 3%;
+    text-align: center;
+}
+
+.location {
+    width: 15%;
+    text-align: left;
+}
+
+.price {
+    width: 12%;
+    text-align: right;
+}
+
+.bbsdd {
+    text-align: right;
+    width: 9%;
+}
+
+thead > tr, #houselist {
+    display: block;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,900);
+
+.module {
+    background:
+    linear-gradient(
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 0)
+    ),
+    url(http://localhost:3000/images/home5.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+#houseinfodiv1 > div > .module {
+    background:
+    linear-gradient(
+            rgba(0, 0, 0, 0),
+            rgba(0, 0, 0, 0)
+    ),
+    url(http://localhost:3000/images/simhome1.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    float: left;
+}
+
+.lr > div {
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    top: 80%;
+    left: 5%;
+    margin: 0;
+}
+
+.dispdiv, .dispdiv:target ~ #tablediv {
+    display: none;
+}
+
+.dispdiv:target, #tablediv {
+    display: block;
+}
+
+
+.simhomcategory, .simhomespec {
+    font-size: medium;
+    font-weight: bold;
+    padding: 0;
+    color: white;
+}
+
+.simhomefirst {
+    width: 40%;
+    padding: 0;
+}
+
+.simhomaddr {
+    font-size: medium;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #e0e0e0;
+    padding: 0;
+}
+
+.category {
+    width: 28%;
+    text-align: right;
+}
+
+.data {
+    width: 22%;
+    text-align: left;
+}
+
+.houseinfodiv, .houseinfodiv:target ~ #houseinfodiv0 {
+    display: none;
+}
+
+.houseinfodiv:target, #houseinfodiv0 {
+    display: block;
+}
+
+
+
+
+

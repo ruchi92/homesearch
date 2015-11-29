@@ -21,75 +21,268 @@
   </head>
   <body  id="page-top">
     <% include header.ejs %>
-    <section class="no-padding" style="display: flex; height: 100%" id="tourinsights">
-        <div id="searchdiv" style="width: 60em; height: 100%; float: left; box-sizing: border-box">
-            <div style="background-color: floralwhite; border: double lightgray;">
-                <div style="display: flex">
-                    <div style="width: 70%; float: left; box-sizing: border-box; padding-left: 10%; color: maroon; ">
+    <section class="no-padding" style="display: flex; height: 100%; background-color: floralwhite; border: double lightgray;" id="tourinsights">
+        <div id="searchdiv">
+            <div>
+                <div style="display: flex; margin-bottom: 2%">
+                    <div id="dataheader">
                         <h2>San Jose Real Estate</h2>
                         <h4><strong>Showing 12 homes</strong></h4>
                     </div>
-                    <div class="btn-group btn-group-justified" style="float: right; margin-right: 5%; width: 30%">
-                        <button style="padding: 10px; background-color: white; font-size: large; border:thin solid lightgray; text-decoration: underline; margin-top: 10%;">
-                            <a href="#about" data-link="first">Table</a>
+                    <div style="float: right; margin-right: 5%; margin-top: 2%">
+                        <button class="tabbtn">
+                            <a type="button" href="#tablediv">Table</a>
                         </button>
-                        <button style="padding: 10px; background-color: white; font-size: large; border:thin solid lightgray; text-decoration: underline; margin-top: 10%;">
-                            <a href="#about" data-link="second">Photos</a>
+                        <button class="tabbtn">
+                            <a type="button" href="#photos">Photos</a>
                         </button>
                     </div>
-                    <div class="col-md-offset-8">
-                        <div id="pages_about" class="textContainer_about">
-                            <div class="textWord_about" data-link="first">
-                                <div class="table-responsive">
-                                    <table class="table">
-                                        <thead><td></td><td>Apartment Name</td><td>Price</td></thead>
-                                        <tr class="bg-success"><td width="4px">1</td><td><p id="myPara1">101 E San Fernando St.</p></td><td>4500</td></tr>
-                                        <tr class="bg-success"><td width="4px">2</td><td><p id="myPara2">201 South 4th street</p></td><td>4950</td></tr>
-                                        <tr class="bg-success"><td width="4px">3</td><td><p id="myPara3">33rd South Apartments</p></td><td>5600</td></tr>
+                </div>
+            </div>
+            <div class="dispdiv" id="photos" style="width: 100%; box-sizing: border-box; height: 80%;">
+                <div id="photosimg">
+                <% for (i = housejson.length-1; i >=0; i--) { %>
+                <% var simhome = housejson[i]; %>
+                    <div class="photosinfodiv" id="photosdiv<%= i %>" style="height: 100%; width: 100%">
+                        <div style="width: 50%; height: 100%; box-sizing: border-box; float: left;">
+                            <div class="module lr">
+                                <div>
+                                    <table style="float: left">
+                                        <tbody>
+                                        <tr>
+                                            <td class="simhomcategory simhomefirst">
+                                                <span class="glyphicon glyphicon-home housesaleicon" aria-hidden="true" style="float: left"></span>
+                                                <%= simhome.price %></td>
+                                            <td class="simhomcategory"><%= simhome.beds %></td>
+                                            <td class="simhomcategory"><%= simhome.baths %></td>
+                                            <td class="simhomcategory"><%= simhome.sqft %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="simhomspec simhomefirst"><%= simhome.str_addr %></td>
+                                            <td class="simhomspec">Beds</td>
+                                            <td class="simhomspec">Baths</td>
+                                            <td class="simhomspec">Sq. Ft</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="simhomaddr"><%= simhome.addr %></td>
+                                        </tr>
+                                        </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-
+                        <div style="box-sizing: border-box;">
+                            <div style="width: 100%; height: 10%">
+                                <img src="<%= simhome.agentpic %>" style="width: 10%; height: 100%; float: left">
+                                <div style="float: left; margin-left: 5%">
+                                    <p style="color: blue"><%= simhome.agent %></p>
+                                    <p style="color: maroon">HomeSearch Agent</p>
+                                </div>
+                            </div>
+                            <div>
+                                <table>
+                                    <tbody>
+                                    <tr>
+                                        <td class="category">HOA</td>
+                                        <td class="data"><%= simhome.hoa %></td>
+                                        <td class="category">Status</td>
+                                        <td class="data"><%= simhome.status %></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="category">$/Sq. Ft.</td>
+                                        <td class="data"><%= simhome.dolsqft %></td>
+                                        <td class="category">On Redfin</td>
+                                        <td class="data"><%= simhome.onhs %></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="category">Year Built</td>
+                                        <td class="data"><%= simhome.yearbuilt %></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="category">Lot Size</td>
+                                        <td class="data"><%= simhome.lot %></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-
-                    <script type="text/javascript">
-                            $('.textWord_about').hide();
-                            $('.link').click(function() {
-                                $('.textWord_about').hide();
-                                $('.textWord_about[data-link=' + $(this).data('link') + ']').fadeIn({
-                                        width: '200px'
-                                }, 300);
-                            });
-                    </script>
-
-
+                    <br />
+                <% } %>
+                </div>
             </div>
-
+            <div class="dispdiv" id="tablediv" style="width: 100%; box-sizing: border-box; height: 80%;">
+                <div id="staticimg">
+                <% for (i = housejson.length-1; i >=0; i--) { %>
+                <% var simhome = housejson[i]; %>
+                    <div class="houseinfodiv" id="houseinfodiv<%= i %>" style="height: 100%; width: 100%">
+                        <div style="width: 50%; height: 100%; box-sizing: border-box; float: left;">
+                            <div class="module lr">
+                                <div>
+                                    <table style="float: left">
+                                        <tbody>
+                                            <tr>
+                                                <td class="simhomcategory simhomefirst">
+                                                    <span class="glyphicon glyphicon-home housesaleicon" aria-hidden="true" style="float: left"></span>
+                                                    <%= simhome.price %></td>
+                                                <td class="simhomcategory"><%= simhome.beds %></td>
+                                                <td class="simhomcategory"><%= simhome.baths %></td>
+                                                <td class="simhomcategory"><%= simhome.sqft %></td>
+                                            </tr>
+                                            <tr>
+                                                <td class="simhomspec simhomefirst"><%= simhome.str_addr %></td>
+                                                <td class="simhomspec">Beds</td>
+                                                <td class="simhomspec">Baths</td>
+                                                <td class="simhomspec">Sq. Ft</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="simhomaddr"><%= simhome.addr %></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="box-sizing: border-box;">
+                            <div style="width: 100%; height: 10%">
+                                <img src="<%= simhome.agentpic %>" style="width: 10%; height: 100%; float: left">
+                                <div style="float: left; margin-left: 5%">
+                                    <p style="color: blue"><%= simhome.agent %></p>
+                                    <p style="color: maroon">HomeSearch Agent</p>
+                                </div>
+                            </div>
+                            <div>
+                                <table>
+                                    <tbody>
+                                        <tr>
+                                            <td class="category">HOA</td>
+                                            <td class="data"><%= simhome.hoa %></td>
+                                            <td class="category">Status</td>
+                                            <td class="data"><%= simhome.status %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="category">$/Sq. Ft.</td>
+                                            <td class="data"><%= simhome.dolsqft %></td>
+                                            <td class="category">On Redfin</td>
+                                            <td class="data"><%= simhome.onhs %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="category">Year Built</td>
+                                            <td class="data"><%= simhome.yearbuilt %></td>
+                                        </tr>
+                                        <tr>
+                                            <td class="category">Lot Size</td>
+                                            <td class="data"><%= simhome.lot %></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                <% } %>
+                </div>
+                <div id="scrollingrecs" style="height: 60%; width: 100%">
+                    <table style="width: 100%; height: 100%">
+                        <thead style="width: 100%">
+                            <tr>
+                                <td class="decbutton"></td>
+                                <td class="addr">Address</td>
+                                <td class="location">Location</td>
+                                <td class="price">Price</td>
+                                <td class="bbsdd">Beds</td>
+                                <td class="bbsdd">Baths</td>
+                                <td class="bbsdd hidden-xs hidden-sm">Sq.Ft.</td>
+                                <td class="bbsdd hidden-xs hidden-sm">$/Sq.Ft.</td>
+                                <td class="bbsdd hidden-xs hidden-sm">Days</td>
+                            </tr>
+                        </thead>
+                        <tbody id="houselist" style="height: 100%; width: 100%">
+                            <% for (i = 0; i < housejson.length; i++) { %>
+                                <% var house = housejson[i]; %>
+                                        <tr id="houserow<%= i%>">
+                                            <td class="decbutton">
+                                                <a type="button" href="#houseinfodiv<%= i %>">L</a>
+                                            </td>
+                                            <td class="addr"><%= house.str_addr %></td>
+                                            <td class="location" style="text-transform: uppercase"><%= house.city %></td>
+                                            <td class="price"><%= house.price %></td>
+                                            <td class="bbsdd"><%= house.beds %></td>
+                                            <td class="bbsdd"><%= house.baths %></td>
+                                            <td class="bbsdd hidden-xs hidden-sm"><%= house.sqft %></td>
+                                            <td class="bbsdd hidden-xs hidden-sm"><%= house.dolsqft %></td>
+                                            <td class="bbsdd hidden-xs hidden-sm"><%= house.onhs %></td>
+                                        </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-        <div id="mapdiv" class="hidden-xs hidden-sm" style="width: 50%; height: 100%; box-sizing: border-box; float: left; position: absolute"></div>
+            <div id="mapdiv" class="hidden-xs hidden-sm"></div>
     </section>
     <% include jsinclusions.ejs %>
     <script style="text/javascript">
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('mapdiv'), {
-                center: new google.maps.LatLng(37.5, -122),
-                scrollwheel: false,
-                zoom: 8,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
-            var latitude = 37.5;
-            var longitude = -122;
-            var marker = new google.maps.Marker({
-                position: new google.maps.LatLng(latitude, longitude)
-            });
-            var ctaLayer = new google.maps.KmlLayer({
-                url: 'http://localhost:3000/images/maps/cb_2014_us_zcta510_500k.kml',
-                map: map
-            });
-            marker.setMap(map);
-        }
-        google.maps.event.addDomListener(window, 'load', initMap);
+        $(document).ready(function() {
+            function initMap() {
+                var map = new google.maps.Map(document.getElementById('mapdiv'), {
+                    center: new google.maps.LatLng(37.5, -122),
+                    scrollwheel: false,
+                    zoom: 8,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
+                });
+                for (i = 0; i < 8; i++) {
+                    $("#houserow0").mouseover(function () {
+                        var infowindow = new google.maps.InfoWindow({
+                            content: "7601 Halladale Court",
+                            position: {lat: 37.396870, lng: -121.802277}
+                        });
+                        infowindow.open(map);
+                        setInterval(function(){infowindow.close()},1000);
+                    })
+                    $("#houserow1").mouseover(function () {
+                        var infowindow = new google.maps.InfoWindow({
+                            content: "16200 Alum Rock",
+                            position: {lat: 37.371091, lng: -121.800752}
+                        });
+                        infowindow.open(map);
+                        setInterval(function(){infowindow.close()},2000);
+                    })
+                    $("#houserow2").mouseover(function () {
+                        var infowindow = new google.maps.InfoWindow({
+                            content: "1414 Dentwood Dr",
+                            position: {lat: 37.255520, lng: -121.889995}
+                        });
+                        infowindow.open(map);
+                        setInterval(function(){infowindow.close()},2000);
+                    })
+                    $("#houserow3").mouseover(function () {
+                        var infowindow = new google.maps.InfoWindow({
+                            content: "903 Sindbad Ave",
+                            position: {lat: 37.350421, lng: -121.852585}
+                        });
+                        infowindow.open(map);
+                        setInterval(function(){infowindow.close()},2000);
+                    })
+                    $("#houserow5").mouseover(function () {
+                        var infowindow = new google.maps.InfoWindow({
+                            content: "3872 Suncrest Ave",
+                            position: {lat: 37.371091, lng: -121.800752}
+                        });
+                        infowindow.open(map);
+                        setInterval(function(){infowindow.close()},2000);
+                    })
+                    $("#houserow6").mouseover(function () {
+                        var infowindow = new google.maps.InfoWindow({
+                            content: "603 Savstrom Way",
+                            position: {lat: 37.283111, lng: -121.826245}
+                        });
+                        infowindow.open(map);
+                        setInterval(function(){infowindow.close()},2000);
+                    })
+                }
+            }
+            google.maps.event.addDomListener(window, 'load', initMap);
+        });
     </script>
   </body>
 </html>
