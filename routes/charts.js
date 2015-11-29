@@ -46,7 +46,7 @@ router.get('/', function(req, res, next) {
         if (!err) {
             console.log(result);
             res.render('charts', { result: result,  pageCount: pageCount,
-                currentPage: currentPage, langchange: langchange});
+                currentPage: currentPage, langchange: langchange.english});
         } else {
             // error handling
         }
@@ -57,11 +57,13 @@ var langchange = {
     english: {
         tools: "tools",
         message: "View in Spanish",
-        aref: "http://localhost:3000/home/spanish"
+        aref: "http://localhost:3000/spanish",
+        charts: "Charts"
     }, spanish: {
         tools: "herramientas",
         message: "Ver en Inglés",
-        aref: "http://localhost:3000/home"
+        aref: "http://localhost:3000/",
+        charts: "Gráficas"
     }
 }
     module.exports = router;

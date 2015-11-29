@@ -3,6 +3,7 @@
 
 
 <!-- Custom Fonts -->
+<link href="http://assets.insights.litmus.com/campaigns/tedc-2015/assets/tweets.css" type="text/css" rel="stylesheet" />
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="/font-awesome/css/font-awesome.min.css" type="text/css">
@@ -13,3 +14,88 @@
 <!-- Custom CSS -->
 <link rel="stylesheet" href="/stylesheets/creative.css" type="text/css">
 <link rel="stylesheet" href="/stylesheets/style.css" type="text/css">
+
+<script>
+    function signout(){
+        sessionStorage.removeItem('email');
+        if(document.getElementById('signout').innerHTML == "Sign Out!"){
+            window.history.back();
+            window.history.back();
+        }
+    }
+</script>
+<script>
+    function header_change(){
+        var email = sessionStorage.getItem('email');
+        console.log(email);
+        if(email != null){
+            console.log( document.getElementById('change').innerHTML);
+            var change_to = "Welcome  " + email + "  ";
+            document.getElementById('change').innerHTML = change_to;
+
+            document.getElementById('signout').innerHTML = "Sign Out!";
+
+        }
+        else{
+            sessionStorage.removeItem('email');
+        }
+    }
+
+    $(window).load(function(){
+        var priceReducedVar = function(){
+            if ($("#priceReduced").is(":checked")) {
+                $('#priceReducedDays').prop('disabled', false);
+            }
+            else {
+                $('#priceReducedDays').prop('disabled', 'disabled');
+            }
+        };
+        $(priceReducedVar);
+        $("#priceReduced").change(priceReducedVar);
+
+        var salesRecordVar = function(){
+            if ($("#saleRecords").is(":checked")) {
+                $('#saleRecord').prop('disabled', false);
+            }
+            else {
+                $('#saleRecord').prop('disabled', 'disabled');
+            }
+        };
+        $(salesRecordVar);
+        $("#saleRecords").change(salesRecordVar);
+
+
+        var openHousesVar = function(){
+            if ($("#openHouses").is(":checked")) {
+                $('#openHouse').prop('disabled', false);
+            }
+            else {
+                $('#openHouse').prop('disabled', 'disabled');
+            }
+        };
+        $(openHousesVar);
+        $("#openHouses").change(openHousesVar);
+
+        var forSaleVar = function(){
+            if ($("#forSale").is(":checked")) {
+                $('#forSaleOptions').prop('disabled', false);
+            }
+            else {
+                $('#forSaleOptions').prop('disabled', 'disabled');
+            }
+        };
+        $(forSaleVar);
+        $("#forSale").change(forSaleVar);
+
+    })
+
+</script>
+<style>
+    ul {
+        list-style-type: none;
+    }
+
+    label {
+        font-weight: normal;
+    }
+</style>

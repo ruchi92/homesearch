@@ -3,18 +3,20 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('search', {langchange: langchange, housejson: housejson});
+  res.render('search', {langchange: langchange.english, housejson: housejson});
 });
 
 var langchange = {
     english: {
         tools: "tools",
         message: "View in Spanish",
-        aref: "http://localhost:3000/home/spanish"
+        aref: "http://localhost:3000/spanish",
+        charts: "Charts"
     }, spanish: {
         tools: "herramientas",
         message: "Ver en Inglés",
-        aref: "http://localhost:3000/home"
+        aref: "http://localhost:3000/",
+        charts: "Gráficas"
     }
 }
 
