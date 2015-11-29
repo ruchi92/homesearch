@@ -1,8 +1,5 @@
 var express = require('express');
 var router = express.Router();
-var connect = require('connect'),
-    mongo = require('mongodb');
-
 mongoose = require('mongoose');
 
 var userSchema = new mongoose.Schema({

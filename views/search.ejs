@@ -37,8 +37,35 @@
                             <a href="#about" data-link="second">Photos</a>
                         </button>
                     </div>
-                </div>
+                    <div class="col-md-offset-8">
+                        <div id="pages_about" class="textContainer_about">
+                            <div class="textWord_about" data-link="first">
+                                <div class="table-responsive">
+                                    <table class="table">
+                                        <thead><td></td><td>Apartment Name</td><td>Price</td></thead>
+                                        <tr class="bg-success"><td width="4px">1</td><td><p id="myPara1">101 E San Fernando St.</p></td><td>4500</td></tr>
+                                        <tr class="bg-success"><td width="4px">2</td><td><p id="myPara2">201 South 4th street</p></td><td>4950</td></tr>
+                                        <tr class="bg-success"><td width="4px">3</td><td><p id="myPara3">33rd South Apartments</p></td><td>5600</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <script type="text/javascript">
+                            $('.textWord_about').hide();
+                            $('.link').click(function() {
+                                $('.textWord_about').hide();
+                                $('.textWord_about[data-link=' + $(this).data('link') + ']').fadeIn({
+                                        width: '200px'
+                                }, 300);
+                            });
+                    </script>
+
+
             </div>
+
         </div>
         <div id="mapdiv" class="hidden-xs hidden-sm" style="width: 50%; height: 100%; box-sizing: border-box; float: left; position: absolute"></div>
     </section>
