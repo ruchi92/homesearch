@@ -57,12 +57,12 @@ var langchange = {
     english: {
         tools: "tools",
         message: "View in Spanish",
-        aref: "http://localhost:3000/spanish",
+        aref: "/spanish",
         charts: "Charts"
     }, spanish: {
         tools: "herramientas",
         message: "Ver en Inglés",
-        aref: "http://localhost:3000/",
+        aref: "/",
         charts: "Gráficas"
     }
 }
