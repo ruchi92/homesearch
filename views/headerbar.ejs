@@ -6,38 +6,41 @@
                     <span class="glyphicon glyphicon-home headericon" style="color: white; padding: 20%; background-color: green; border-radius: 5px; display: inline-block" aria-hidden="true"></span>
                 </div>
                 <div style="float: left; margin-right: 10%">
-                    <h3 style="font-weight: bold"> 489 Boynton Ave #1 </h3>
-                    <h4 style="color: gray"> SAN JOSE, CA 95117 </h4>
-                    <h5 style="color: gray">Status: Pending(Donot Show)</h5>
+                    <h3 style="font-weight: bold"> <%= property.addressfirstline %> </h3>
+                    <h4 style="color: gray"> <%= property.addresssecondline %> </h4>
+                    <h5 style="color: gray"><%= property.status %></h5>
                 </div>
                 <div style="float: left; margin-right: 5%">
                     <div class="info">
-                        <h3 style="font-weight: bold"> $777000 </h3>
+                        <h3 style="font-weight: bold"> <%= property.listprice %> </h3>
                         <h5 style="color: gray">Listed at Price</h5>
                     </div>
                     <div class="info">
-                        <h3 style="font-weight: bold"> 3 </h3>
+                        <h3 style="font-weight: bold"> <%= property.beds %> </h3>
                         <h5 style="color: gray">Beds</h5>
                     </div>
                     <div class="info">
-                        <h3 style="font-weight: bold"> 2.5 </h3>
+                        <h3 style="font-weight: bold"> <%= property.baths %> </h3>
                         <h5 style="color: gray">Baths</h5>
                     </div>
                     <div class="info">
-                        <h3 style="font-weight: bold"> 1567 sq.ft </h3>
+                        <h3 style="font-weight: bold"> <%= property.sqft %> </h3>
                         <h5 style="color: gray">$496/sq.ft</h5>
                     </div>
-                    <h5>Built: 2008 Lot Size 000 On HomeSearch 80 days</h5>
-                </div>
-                <div style="float: left; border: thin solid gray; border-radius: 5px; background-color: white;  ">
-                    <div style="float: left; border-right: thin solid gray">
-                        <span class="glyphicon glyphicon-heart headericon actionicon" aria-hidden="true"></span>
+                    <br />
+                    <div style="clear: left">
+                        <h5>Built: <%= property.built %> Lot Size <%= property.lotsize %> On HomeSearch <%= property.onhs %></h5>
                     </div>
-                    <div style="float: left; border-right: thin solid gray">
-                        <span class="glyphicon glyphicon-remove headericon actionicon" aria-hidden="true"></span>
+                </div>
+                <div style="float: left;">
+                    <div style="float: left;">
+                        <span class="glyphicon glyphicon-heart headericon actionicon" style="background-color: white; border: thin solid lightgray" aria-hidden="true"></span>
                     </div>
                     <div style="float: left;">
-                        <span class="glyphicon glyphicon-envelope headericon actionicon"  aria-hidden="true"></span>
+                        <span class="glyphicon glyphicon-remove headericon actionicon" style="background-color: white; border: thin solid lightgray" aria-hidden="true"></span>
+                    </div>
+                    <div style="float: left;">
+                        <span class="glyphicon glyphicon-envelope headericon actionicon" style="background-color: white; border: thin solid lightgray" aria-hidden="true"></span>
                     </div>
                 </div>
                 <div style="clear: both">

@@ -4,17 +4,19 @@ var MongoClient = require('mongodb').MongoClient;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    MongoClient.connect('mongodb://localhost:27017/test', function(err, db) {
+    MongoClient.connect('mongodb://webarch:webarch@ds053874.mongolab.com:53874/cmpe280project', function(err, db) {
         if (err) throw err;
-        db.collection('propdetails').find().toArray(function(err, result) {
+        console.log(db);
+        db.collection('proppdetails').find().toArray(function(err, result) {
             if (err) throw err;
+            console.log(result);
             res.render('details', { property: result[0], language: langtokens.english, langchange: langchange.english });
         });
     });
 });
 
 router.get('/spanish', function(req, res, next) {
-    MongoClient.connect('mongodb://localhost:27017/test', function(err, db) {
+    MongoClient.connect('mongodb://webarch:webarch@ds053874.mongolab.com:53874/cmpe280project', function(err, db) {
         if (err) throw err;
         db.collection('propdetailsspan').find().toArray(function(err, result) {
             if (err) throw err;
@@ -415,12 +417,12 @@ var langchange = {
     english: {
         tools: "tools",
         message: "View in Spanish",
-        aref: "http://localhost:3000/spanish",
+        aref: "http://localhost:3000/home/spanish",
         charts: "Charts"
     }, spanish: {
         tools: "herramientas",
         message: "Ver en Inglés",
-        aref: "http://localhost:3000/",
+        aref: "http://localhost:3000/home",
         charts: "Gráficas"
     }
 }
